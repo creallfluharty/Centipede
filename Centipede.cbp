@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Centipede" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/Centipede" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/Centipede" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="source/Bullet.cpp" />
+		<Unit filename="source/Bullet.h" />
+		<Unit filename="source/Centipede.vcxproj" />
+		<Unit filename="source/CentipedeGame.cpp" />
+		<Unit filename="source/CentipedeGame.h" />
+		<Unit filename="source/CentipedeManager.cpp" />
+		<Unit filename="source/CentipedeManager.h" />
+		<Unit filename="source/CentipedeSegment.cpp" />
+		<Unit filename="source/CentipedeSegment.h" />
+		<Unit filename="source/Flea.cpp" />
+		<Unit filename="source/Flea.h" />
+		<Unit filename="source/GameObject.cpp" />
+		<Unit filename="source/GameObject.h" />
+		<Unit filename="source/Mushroom.cpp" />
+		<Unit filename="source/Mushroom.h" />
+		<Unit filename="source/Player.cpp" />
+		<Unit filename="source/Player.h" />
+		<Unit filename="source/ScoreBoi.cpp" />
+		<Unit filename="source/ScoreBoi.h" />
+		<Unit filename="source/Scorpion.cpp" />
+		<Unit filename="source/Scorpion.h" />
+		<Unit filename="source/Spider.cpp" />
+		<Unit filename="source/Spider.h" />
+		<Unit filename="source/a.out" />
+		<Unit filename="source/main.cpp" />
+		<Unit filename="source/stdafx.h" />
+		<Extensions>
+			<envvars />
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
