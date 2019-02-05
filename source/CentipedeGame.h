@@ -7,6 +7,7 @@
 #include "Flea.h"
 #include <fstream>
 #include <memory>
+#include <string>
 
 class CentipedeManager;
 

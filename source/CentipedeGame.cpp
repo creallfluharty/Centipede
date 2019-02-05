@@ -79,7 +79,7 @@ bool CentipedeGame::update()
 
 	//migrates map from frame a to frame b
 	for (int y = 0; y < 30; ++y)
-		for (int x = 0; x < 30; ++x)update
+		for (int x = 0; x < 30; ++x)
 			for (int i = 0; i < map[y][x][!frame].size(); ++i)
 				placeObject(map[y][x][!frame].at(i)->getPosition().x, map[y][x][!frame].at(i)->getPosition().y, map[y][x][!frame].at(i));
 
@@ -276,7 +276,7 @@ unsigned int CentipedeGame::getCountOf(char* type, unsigned int startX = 0, unsi
 	for (int y = startY; y < endY; ++y)//check mushrooms in player position
 		for (int x = startX; x < endX; ++x)
 			for (int i = 0; i < CentipedeGame::map[y][x][CentipedeGame::frame].size(); i++)
-				if (!std::strcmp(CentipedeGame::map[y][x][CentipedeGame::frame].at(i)->getType(), type))
+				if (CentipedeGame::map[y][x][CentipedeGame::frame].at(i)->getType() != type)
 					++count;
 	return count;
 }
