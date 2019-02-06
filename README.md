@@ -1,3 +1,3 @@
-# Centipede - *To be* (i.e. it is not currently) compilable via GCC
+# compile with ```make all```
 # Forked from MCassimus/Centipede
 
