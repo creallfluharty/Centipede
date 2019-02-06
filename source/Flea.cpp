@@ -57,6 +57,7 @@ void Flea::update(CentipedeGame *gameHandle)
 		{
 			pointValue = 0;
 			health = 0;
+            CentipedeGame::liveFlea = false;
 		}
 	}
 }
@@ -64,6 +65,8 @@ void Flea::update(CentipedeGame *gameHandle)
 
 void Flea::collideWith(GameObject * other)
 {
-	if (dynamic_cast<Bullet *>(other) != nullptr)
+	if (dynamic_cast<Bullet *>(other) != nullptr) {
 		health = 0;
+		CentipedeGame::liveFlea = false;
+	}
 }

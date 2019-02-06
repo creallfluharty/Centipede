@@ -17,7 +17,6 @@ void Player::update(CentipedeGame *gameHandle)
 	//setVelocity(sf::Vector2i(getNearestCellPos(getRelMousePos()).x - currentPosition.x, getNearestCellPos(getRelMousePos()).y-currentPosition.y));
 
 	currentPosition = getNearestCellPos(gameHandle->getRelMousePos());
-	printf("interval is %i\n", interval.x);
 
 	//int currentPositionThing = 50;
 
@@ -36,8 +35,6 @@ void Player::update(CentipedeGame *gameHandle)
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && !Bullet::liveBullet) {
 		gameHandle->spawnObject<Bullet>(currentPosition.x, currentPosition.y);
 	}
-	/*
-	object.setPosition(static_cast<sf::Vector2f>(currentPosition*static_cast<int>(interval.x)));	*/
 }
 
 void Player::collideWith(GameObject * other)

@@ -10,6 +10,7 @@
 #include "CentipedeManager.h"
 
 bool CentipedeGame::frame = false;
+bool CentipedeGame::liveFlea = false;
 std::vector<std::shared_ptr<GameObject>> CentipedeGame::map[30][30][2] = {};
 unsigned int CentipedeGame::clock = 0, CentipedeGame::score = 0;
 int CentipedeGame::playerLives = -1;
@@ -63,9 +64,9 @@ CentipedeGame::~CentipedeGame() {
 	delete centMan;
 }
 
-
-static bool liveFlea = false;
 bool CentipedeGame::update() {
+
+    printf("liveFlea is %i\n", liveFlea);
 
     GameObject::interval = static_cast<sf::Vector2i>(playerArea.getSize()) / 30;
 
@@ -244,13 +245,13 @@ void CentipedeGame::placeObject(unsigned int x, unsigned int y, std::shared_ptr<
 
 void CentipedeGame::kill(std::shared_ptr<GameObject>& thing) {
 	bool readyToDie;
-	std::cout << "i exist " << thing.use_count() << " times\n";
+	//std::cout << "i exist " << thing.use_count() << " times\n"; // <-- Duplication bug to resolve
 	score += thing->die(readyToDie, this);
 
 	if (readyToDie)
 		thing.reset();
 
-	std::cout << "score is now " << score << std::endl;
+	//std::cout << "score is now " << score << std::endl;
 }
 
 void CentipedeGame::generateGrid() {

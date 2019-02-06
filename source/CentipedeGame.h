@@ -33,6 +33,7 @@ public:
 	};
 
 	static unsigned int clock;
+	static bool liveFlea;
 
 	unsigned int getCountOf(char*, unsigned int, unsigned int, unsigned int, unsigned int);
 
