@@ -10,9 +10,9 @@
 #include "CentipedeGame.h"
 using namespace std;
 
+void splashScreen(sf::RenderWindow&);
 
-int main()
-{
+int main() {
 
 	std::time_t seed = time(NULL);
 	srand(seed);
@@ -23,42 +23,25 @@ int main()
 
 	CentipedeGame game(&window, winDim);
 
-	sf::Texture startingScreen;
-	startingScreen.loadFromFile("../Sprites/startscreen.png");
-
-	sf::Sprite sprite;
-	sprite.setTexture(startingScreen);
-	sprite.setScale(1.95f, 2.05f);
-
-	window.draw(sprite);
-	window.display();
-
 	window.setFramerateLimit(60);
 	//window.setKeyRepeatEnabled(false);
 
 	bool frameByFrameMode(false), enterPressed(false);
-	bool gameStart = false;
 
 	sf::Event event;
 
-	while (window.isOpen()) {
-		if (sf::Mouse::getPosition(window).x > 185 &&
-			sf::Mouse::getPosition(window).x < 305 &&
-			sf::Mouse::getPosition(window).y > 335 &&
-			sf::Mouse::getPosition(window).y < 385 &&
-			sf::Mouse::isButtonPressed(sf::Mouse::Left))
-		{
-			gameStart = true;
-			window.setMouseCursorVisible(false);
-		}
+	splashScreen(window);
 
-		if (frameByFrameMode && gameStart) {
+	while (window.isOpen()) {
+
+
+		if (frameByFrameMode) {
 			if (enterPressed) {
 				game.update();
 				enterPressed = false;
 			}
 		}
-		else if (gameStart)
+		else
 			game.update();
 
 
@@ -78,4 +61,24 @@ int main()
 	}
 
 	return 0;
+}
+
+void splashScreen(sf::RenderWindow &window) {
+    sf::Texture startingScreen;
+	startingScreen.loadFromFile("../Sprites/startscreen.png");
+
+	sf::Sprite sprite;
+	sprite.setTexture(startingScreen);
+	sprite.setScale(1.95f, 2.05f);
+
+	window.draw(sprite);
+	window.display();
+
+	while (!(sf::Mouse::getPosition(window).x > 185 &&
+        sf::Mouse::getPosition(window).x < 305 &&
+		sf::Mouse::getPosition(window).y > 335 &&
+		sf::Mouse::getPosition(window).y < 385 &&
+		sf::Mouse::isButtonPressed(sf::Mouse::Left))) {}
+
+    window.setMouseCursorVisible(false);
 }
