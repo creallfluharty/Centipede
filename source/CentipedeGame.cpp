@@ -16,8 +16,7 @@ int CentipedeGame::playerLives = -1;
 static int lastPlayerLives;
 
 
-CentipedeGame::CentipedeGame(sf::RenderWindow * renderWindow, const sf::Vector2u oWD) : originalWindowDimensions(oWD)
-{
+CentipedeGame::CentipedeGame(sf::RenderWindow * renderWindow, const sf::Vector2u oWD) : originalWindowDimensions(oWD) {
 	GameObject::oWD = oWD;
 	window = renderWindow;
 
@@ -56,8 +55,7 @@ CentipedeGame::CentipedeGame(sf::RenderWindow * renderWindow, const sf::Vector2u
 }
 
 
-CentipedeGame::~CentipedeGame()
-{
+CentipedeGame::~CentipedeGame() {
 	for (int y = 0; y < 30; ++y)
 		for (int x = 0; x < 30; ++x)
 			map[y][x][frame].clear();
@@ -67,8 +65,10 @@ CentipedeGame::~CentipedeGame()
 
 
 static bool liveFlea = false;
-bool CentipedeGame::update()
-{
+bool CentipedeGame::update() {
+
+    GameObject::interval = static_cast<sf::Vector2i>(playerArea.getSize()) / 30;
+
 	//update objects
 	for (int y = 0; y < 30; ++y)
 		for (int x = 0; x < 30; ++x)
@@ -95,8 +95,7 @@ bool CentipedeGame::update()
 	for (int y = 0; y < 30; ++y)
 		for (int x = 0; x < 30; ++x)
 			for (int i = 0; i < map[y][x][frame].size(); ++i)
-				if (map[y][x][frame].at(i)->getHealth() == 0)
-				{
+				if (map[y][x][frame].at(i)->getHealth() == 0) {
 					kill(map[y][x][frame].at(i));
 					map[y][x][frame].erase(map[y][x][frame].begin() + i);
 				}
@@ -192,8 +191,6 @@ void CentipedeGame::draw()
 
 	playerArea.display();
 	scoreArea.display();
-
-	GameObject::interval = static_cast<sf::Vector2i>(playerArea.getSize()) / 30;
 
 	//draw all objects in map
 	for (int y = 0; y < 30; ++y)

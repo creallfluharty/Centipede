@@ -1,8 +1,7 @@
 /*
 	Project Title : Centipede
 	Date : 1/24/2018
-	Description : Recreate classic arcade game centipede for use with a
-	trackball controller for later use in arcade cabinet
+	Description : Recreate classic arcade game centipede
 */
 
 #include "stdafx.h"
@@ -17,9 +16,9 @@ int main() {
 	std::time_t seed = time(NULL);
 	srand(seed);
 
-	const sf::Vector2u winDim(480, 504);
+	sf::Vector2u winDim(480, 504);
 
-	sf::RenderWindow window(sf::VideoMode(winDim.x, winDim.y), "Centipede");
+	sf::RenderWindow window(sf::VideoMode(winDim.x, winDim.y), "Centipede", sf::Style::Resize | sf::Style::Close);
 
 	CentipedeGame game(&window, winDim);
 
@@ -48,8 +47,15 @@ int main() {
 		while (window.pollEvent(event)) {
 			if (event.type == sf::Event::Closed)
 				window.close();
-			if (event.type == sf::Event::Resized)//resize to keep original aspect ratio
-				window.setSize(sf::Vector2u(event.size.width, event.size.width * 1.05));
+			if (event.type == sf::Event::Resized) {//resize to keep original aspect ratio
+
+                //Notice: Unexpected behaviour on XFCE which prevents window from being resized by the application, presumembly a bug in SFML
+                //In order to get the expected window, maximise and then un-maximise the window
+
+                winDim.x = event.size.width;
+                winDim.y = static_cast<int>(static_cast<float>(event.size.width) * 1.05);
+				window.setSize(winDim);
+			}
 			if (event.type == sf::Event::KeyPressed)
 				if (event.key.code == sf::Keyboard::Escape)
 					window.close();

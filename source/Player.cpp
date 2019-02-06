@@ -14,26 +14,29 @@ Player::Player(int x, int y) : GameObject(x, y)
 
 void Player::update(CentipedeGame *gameHandle)
 {
-	/*setVelocity(sf::Vector2i(getNearestCellPos(getRelMousePos()).x - currentPosition.x, getNearestCellPos(getRelMousePos()).y-currentPosition.y));
+	//setVelocity(sf::Vector2i(getNearestCellPos(getRelMousePos()).x - currentPosition.x, getNearestCellPos(getRelMousePos()).y-currentPosition.y));
 
 	currentPosition = getNearestCellPos(gameHandle->getRelMousePos());
-	currentPosition /= static_cast<int>(interval.x);
-	if (!mushroom in way)
-	goto mouse
-	else
-	 go untill hit mushroom
+	printf("interval is %i\n", interval.x);
+
+	//int currentPositionThing = 50;
+
+	currentPosition /= interval.x;
+
+
 	if ((30 - currentPosition.y) > 12)
-	currentPosition.y = 30-12;
+        currentPosition.y = 30-12;
 	if (currentPosition.y > 29)
-	currentPosition.y = 29;
+        currentPosition.y = 29;
 	if (currentPosition.x < 0)
-	currentPosition.x = 0;
+        currentPosition.x = 0;
 	if (currentPosition.x > 29)
-	currentPosition.x = 29;
-	if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && !Bullet::liveBullet)
-	{
+        currentPosition.x = 29;
+
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && !Bullet::liveBullet) {
 		gameHandle->spawnObject<Bullet>(currentPosition.x, currentPosition.y);
 	}
+	/*
 	object.setPosition(static_cast<sf::Vector2f>(currentPosition*static_cast<int>(interval.x)));	*/
 }
 

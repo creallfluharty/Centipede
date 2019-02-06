@@ -8,7 +8,7 @@ class Bullet : public GameObject
 public:
 	Bullet(int, int);
 	~Bullet();
-	void update();
+	void update(CentipedeGame *gameHandle);
 	void collideWith(GameObject*);
 	//bool isAlive();
 	//void shootFrom(sf::Vector2i);
@@ -16,5 +16,5 @@ public:
 	char* getType() { return "Bullet"; }
 	static bool liveBullet;
 private:
-	int delay = 1;
+	unsigned int speed = 1;
 };

@@ -26,9 +26,9 @@ Bullet::~Bullet()
 }
 
 
-void Bullet::update()
+void Bullet::update(CentipedeGame *gameHandle)
 {
-	if (CentipedeGame::clock % delay == 0)
+	if (CentipedeGame::clock % speed == 0)
 		currentPosition.y += velocity.y;
 }
 
