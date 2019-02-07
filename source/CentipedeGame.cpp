@@ -52,7 +52,6 @@ CentipedeGame::CentipedeGame(sf::RenderWindow * renderWindow, const sf::Vector2u
 
 	centMan = new CentipedeManager();
 	centMan->bindToGame(this);
-	centMan->beginSpawn(CentipedeGame::clock, 8, 8);
 }
 
 
@@ -65,8 +64,6 @@ CentipedeGame::~CentipedeGame() {
 }
 
 bool CentipedeGame::update() {
-
-    printf("liveFlea is %i\n", liveFlea);
 
     GameObject::interval = static_cast<sf::Vector2i>(playerArea.getSize()) / 30;
 
@@ -134,6 +131,10 @@ bool CentipedeGame::update() {
 	{
 		std::shared_ptr<Spider> spider = spawnObject<Spider>(rand() % 30 < 15 ? 0 : 29, rand() % 5 + 18);
 		spider->setTarget(findFirstInstanceOf<Player>());
+	}
+
+	if (!centMan->isCentipedeAlive()) {
+        centMan->beginSpawn(CentipedeGame::clock, 8, 8);
 	}
 
 	//this should be happening when player dies

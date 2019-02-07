@@ -41,11 +41,22 @@ bool CentipedeManager::beginSpawn(unsigned int frame, unsigned int _speed, unsig
 }
 
 void CentipedeManager::update() {
-	if (!done && (CentipedeGame::clock % speed == 0)) {
-		segments.push_back(gameHandle->spawnObject<CentipedeSegment>(entryX, 0));
-		if (++haveSpawned >= length)
-			done = true;
+	if (!done) {
+        if (CentipedeGame::clock % speed == 0) {
+            segments.push_back(gameHandle->spawnObject<CentipedeSegment>(entryX, 0));
+            if (++haveSpawned >= length)
+                done = true;
+        }
+	} else {
+	    //verify segments
+	    for (int i = 0; i < segments.size(); ++i) {
+	        if (segments[i].use_count() < 2) {
+                segments.erase(segments.begin() + i);
+                --i;
+	        }
+	    }
 	}
+
 }
 
 void CentipedeManager::placeSegment() {

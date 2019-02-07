@@ -18,6 +18,8 @@ public:
 
 	void update();
 
+	bool isCentipedeAlive() { return segments.size() > 0; }
+
 private:
 	CentipedeGame *gameHandle;
 	void placeSegment();
